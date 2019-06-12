@@ -5,10 +5,15 @@ from flask import Flask, Response, request
 from multiprocessing import Process
 
 app = Flask(__name__)
-#SERVER_ENDPOINT = 'http://192.168.191.117:5000/postjson'
-SERVER_ENDPOINT = 'http://192.168.43.180:5000/postjson'
+SERVER_ENDPOINT = 'http://192.168.191.117:5000/postjson'
 
 
+#   Description: Send information to server
+#
+#   Parameters: none
+#
+#   Return value: none
+#
 @app.route('/info', methods=['POST'])
 def post():
     content = json.loads(request.data)
@@ -21,11 +26,13 @@ def post():
     )
 
 
+#   Description: Send request to server
+#
+#   Parameters: file_name - file with program code
+#
+#   Return value: none
+#
 def send_request(file_name):
-    """
-
-    :param file_name: comment
-    """
     with open(file_name, "r") as file_object:
         program_code = file_object.read()
 
